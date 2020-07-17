@@ -27,7 +27,9 @@ const App = () => {
           <div className="content">
             <p>
               Keyboard Navigation Example by <a href="https://www.youtube.com/channel/UCqawL4rsFulZi1zjpromBNQ">JS Dżem</a> | <a href="https://twitter.com/le_brande">@lebrande</a><br />
-              Styled with <a href="https://bulma.io/">Bulma</a>.
+              Styled with <a href="https://bulma.io/">Bulma</a>.<br />
+              Date picker component: <a href="https://react-day-picker.js.org/">react-day-picker</a>.<br />
+              Inspired by <a href="https://usehooks.com/">useHooks(🐠)</a>.
             </p>
           </div>
         </div>
