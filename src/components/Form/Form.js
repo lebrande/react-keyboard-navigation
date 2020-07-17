@@ -10,8 +10,14 @@ const Form = () => {
       <Field label="Email" />
       <Field label="Phone number" />
       <Field label="Delivery address" />
-      <Field label="Delivery date" />
-      <DatePicker />
+      <Field
+        label="Delivery date"
+        renderDropdown={() => {
+          return (
+            <DatePicker />
+          );
+        }}
+      />
       <Field label="Notes" />
       <Submit />
     </form>

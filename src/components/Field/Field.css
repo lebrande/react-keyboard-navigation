@@ -1,0 +1,7 @@
+.Field__dropdown {
+  position: absolute;
+  background-color: var(--main-bg-color);
+  z-index: var(--dropdown-z-index);
+  border-radius: var(--default-border-radius);
+  border: 1px solid var(--default-border-color)
+}
