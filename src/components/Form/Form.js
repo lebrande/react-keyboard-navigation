@@ -1,6 +1,7 @@
 import React from 'react';
 import Field from '../Field/Field';
 import Submit from '../Submit/Submit';
+import DatePicker from '../DatePicker/DatePicker';
 
 const Form = () => {
   return (
@@ -10,6 +11,7 @@ const Form = () => {
       <Field label="Phone number" />
       <Field label="Delivery address" />
       <Field label="Delivery date" />
+      <DatePicker />
       <Field label="Notes" />
       <Submit />
     </form>
