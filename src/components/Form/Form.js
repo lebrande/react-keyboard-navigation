@@ -1,14 +1,17 @@
-import React from "react";
+import React from 'react';
+import Field from '../Field/Field';
+import Submit from '../Submit/Submit';
 
 const Form = () => {
   return (
     <form>
-      <div className="field">
-        <label className="label">Name</label>
-        <div className="control">
-          <input className="input" type="text" placeholder="Text input" />
-        </div>
-      </div>
+      <Field label="Name" />
+      <Field label="Email" />
+      <Field label="Phone number" />
+      <Field label="Delivery address" />
+      <Field label="Delivery date" />
+      <Field label="Notes" />
+      <Submit />
     </form>
   );
 };
