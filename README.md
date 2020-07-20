@@ -3,3 +3,4 @@
 - styled with [Bulma](https://bulma.io/).
 - [react-day-picker](https://react-day-picker.js.org/)
 - inspired by [useHooks(🐠)](https://usehooks.com/)
+- spatial navigation by [js-spatial-navigation](https://github.com/luke-chang/js-spatial-navigation)
