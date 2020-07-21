@@ -30,6 +30,17 @@ const SidebarMenu = ({ activeView, setActiveView }) => {
             Grid
           </a>
         </li>
+        <li>
+          <a
+            href="#"
+            onClick={() => {
+              setActiveView('slider');
+            }}
+            className={activeView === 'slider' ? 'is-active' : ''}
+          >
+            Image Slider
+          </a>
+        </li>
       </ul>
     </aside>
   );

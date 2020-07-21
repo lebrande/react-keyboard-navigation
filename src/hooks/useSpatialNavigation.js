@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import SpatialNavigation from 'spatial-navigation-js';
 
-export const useSpatialNavigation = (selector) => {
+export const useSpatialNavigation = (selector, deps = []) => {
   useEffect(() => {
     const id = SpatialNavigation.add({
       selector,
@@ -11,5 +11,5 @@ export const useSpatialNavigation = (selector) => {
     return () => {
       SpatialNavigation.remove(id);
     };
-  }, []);
+  }, deps);
 }

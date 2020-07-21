@@ -4,6 +4,7 @@ import Form from "../Form/Form";
 import Grid from "../Grid/Grid";
 import SidebarMenu from "../SidebarMenu/SidebarMenu";
 import Ribbon from "../Ribbon/Ribbon";
+import Slider from "../Slider/Slider";
 import { useSpatialNavigation } from "../../hooks/useSpatialNavigation";
 
 const App = () => {
@@ -42,6 +43,11 @@ const App = () => {
             {activeView === 'grid' && (
               <div className="column">
                 <Grid />
+              </div>
+            )}
+            {activeView === 'slider' && (
+              <div className="column">
+                <Slider />
               </div>
             )}
           </div>
