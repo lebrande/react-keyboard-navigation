@@ -4,7 +4,7 @@ const Submit = () => {
   return (
     <div className="field">
       <div className="control">
-        <button className="button is-link">Submit your order</button>
+        <button className="button is-primary">Submit your order</button>
       </div>
     </div>
   );
