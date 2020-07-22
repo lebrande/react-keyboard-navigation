@@ -1,0 +1,42 @@
+.Slider {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  border: 1px solid black;
+}
+
+.Slider__item {
+  position: absolute;
+  width: 20%;
+  height: 85%;
+  top: 50%;
+}
+
+.Slider__content {
+  height: 100%;
+}
+
+.Slider .Slider__content--1 {
+  background-color: blue;
+}
+.Slider .Slider__content--2 {
+  background-color: yellow;
+}
+.Slider .Slider__content--3 {
+  background-color: red;
+}
+.Slider .Slider__content--4 {
+  background-color: green;
+}
+.Slider .Slider__content--5 {
+  background-color: hotpink;
+}
+.Slider .Slider__content--6 {
+  background-color: indigo;
+}
+.Slider .Slider__content--7 {
+  background-color: lightseagreen;
+}
+.Slider .Slider__content--8 {
+  background-color: maroon;
+}
