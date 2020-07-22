@@ -81,6 +81,9 @@ const App = () => {
               </a>
               <br />
               <a href="https://tholman.com/github-corners/">github ribbon</a>
+              <br />
+              animations with {" "}
+              <a href="https://www.framer.com/motion/">framer-motion</a>
             </p>
           </div>
         </div>

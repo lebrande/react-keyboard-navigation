@@ -90,13 +90,11 @@ const Slider = () => {
               exit={variant === 'prev' ? 'exitPrev' : 'exitNext'}
             >
               <p
-                className={`notification is-primary Slider__content Slider__content--${order}`}
+                className={`notification is-primary Slider__content`}
                 style={{
                   backgroundImage: `url('${image}')`
                 }}
-              >
-                Item {order}
-              </p>
+              />
             </motion.div>
           );
         })}

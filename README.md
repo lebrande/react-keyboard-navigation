@@ -5,3 +5,4 @@
 - inspired by [useHooks(🐠)](https://usehooks.com/)
 - spatial navigation by [js-spatial-navigation](https://github.com/luke-chang/js-spatial-navigation)
 - [github ribbon](https://tholman.com/github-corners/)
+- animations with: [framer-motion](https://www.framer.com/motion/)
