@@ -3,6 +3,32 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useSpatialNavigation } from "../../hooks/useSpatialNavigation";
 import "./Slider.css";
 
+import apple from '../../img/apple.jpg';
+import blueberry from '../../img/blueberry.jpg';
+import cherry from '../../img/cherry.jpg';
+import grapefruit from '../../img/grapefruit.jpg';
+import lime from '../../img/lime.jpg';
+import orange from '../../img/orange.jpg';
+import peach from '../../img/peach.jpg';
+import pear from '../../img/pear.jpg';
+import pineapple from '../../img/pineapple.jpg';
+import strawberry from '../../img/strawberry.jpg';
+import tomato from '../../img/tomato.jpg';
+
+const images = [
+  apple,
+  blueberry,
+  cherry,
+  grapefruit,
+  lime,
+  orange,
+  peach,
+  pear,
+  pineapple,
+  strawberry,
+  tomato,
+];
+
 const variants = {
   initialPrev: { left: '10%', opacity: 0, scale: 0.5, x: '-50%', y: '-50%' },
   exitPrev: { left: '10%', opacity: 0, scale: 0.5, x: '-50%', y: '-50%' },
@@ -13,28 +39,33 @@ const variants = {
   initialNext: { left: '90%', opacity: 0, scale: 0.5, x: '-50%', y: '-50%' },
 }
 
-const setVisibleItems = (activeItemValue) => {
-  if (activeItemValue === 1) {
-    return [
-      { value: 1, variant: 'active' }, 
-      { value: 2, variant: 'next' },
-    ];
+const getVariant = (itemOrder, activeItemOrder) => {
+  if (itemOrder - activeItemOrder + 1 === 0) {
+    return 'prev';
   }
-  if (activeItemValue === 8) {
-    return [
-      { value: 7, variant: 'prev' }, 
-      { value: 8, variant: 'active' },
-    ];
+  if (itemOrder - activeItemOrder === 0) {
+    return 'active';
+  }
+  if (itemOrder - activeItemOrder - 1 === 0) {
+    return 'next';
   }
 
-  return [1, 2, 3, 4, 5, 6, 7, 8]
+  return 'hidden';
+}
+
+const setVisibleItems = (activeItemOrder) => {
+  return images
+    .map((image, index) => ({
+      order: index + 1,
+      image,
+    }))
+    .map((item) => ({
+      ...item,
+      variant: getVariant(item.order, activeItemOrder),
+    }))
     .filter(
-      (item) => item >= activeItemValue - 1 && item <= activeItemValue + 1
-    )
-    .map((item, index) => ({
-      value: item,
-      variant: index === 0 ? 'prev' : index === 1 ? 'active' : 'next'
-    }));
+      ({ variant }) => variant !== 'hidden'
+    );
 };
 
 const Slider = () => {
@@ -45,21 +76,27 @@ const Slider = () => {
   return (
     <div id="slider" className="Slider">
       <AnimatePresence>
-        {items.map(({ value, variant }) => {
+        {items.map(({ order, variant, image }) => {
           return (
             <motion.div
-              key={value}
+              key={order}
               className="Slider__item"
               onFocus={() => {
-                console.log('onFocus', value)
-                setItems(setVisibleItems(value));
+                setItems(setVisibleItems(order));
               }}
               variants={variants}
               animate={variant}
               initial={variant === 'prev' ? 'initialPrev' : 'initialNext'}
               exit={variant === 'prev' ? 'exitPrev' : 'exitNext'}
             >
-              <p className={`notification is-primary Slider__content Slider__content--${value}`}>Item {value}</p>
+              <p
+                className={`notification is-primary Slider__content Slider__content--${order}`}
+                style={{
+                  backgroundImage: `url('${image}')`
+                }}
+              >
+                Item {order}
+              </p>
             </motion.div>
           );
         })}
