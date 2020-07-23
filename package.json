@@ -3,6 +3,8 @@
   "scripts": {
     "start": "parcel src/index.html",
     "build": "parcel build src/index.html",
+    "test": "jest",
+    "test-watch": "jest --watch",
     "lint": "npx eslint '*/**/*.{js,ts,tsx}'"
   },
   "license": "MIT",
