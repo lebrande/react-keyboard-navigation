@@ -1,14 +1,13 @@
-// https://usehooks.com/useOnClickOutside/
-import { useEffect } from 'react';
+import { useEffect, RefObject } from 'react';
 
 export const useFocusOutside = (
-  ref,
-  onFocusOutside,
-) => {
+  ref: RefObject<HTMLDivElement>,
+  onFocusOutside: () => void,
+): void => {
   useEffect(() => {
     const { current } = ref;
-    const handleFocusOutside = (event) => {
-      if (current && !current.contains(event.target)) {
+    const handleFocusOutside = (event: FocusEvent) => {
+      if (current && !current.contains(event.target as Node)) {
         onFocusOutside();
       }
     };
