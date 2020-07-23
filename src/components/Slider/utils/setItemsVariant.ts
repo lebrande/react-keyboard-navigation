@@ -9,6 +9,5 @@ export const setItemsVariant = (
     .map((item) => ({
       ...item,
       variant: getVariant(item.order, activeItemOrder),
-    }))
-    
+    }));
 };
