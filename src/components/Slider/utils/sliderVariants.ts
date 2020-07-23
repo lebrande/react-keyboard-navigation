@@ -1,4 +1,5 @@
 export const sliderVariants = {
+  initialActive: { left: '50%', opacity: 0, scale: 2, x: '-50%', y: '-50%' },
   initialPrev: { left: '10%', opacity: 0, scale: 0.5, x: '-50%', y: '-50%' },
   exitPrev: { left: '10%', opacity: 0, scale: 0.5, x: '-50%', y: '-50%' },
   prev: { left: '30%', opacity: 1, scale: 0.8, x: '-50%', y: '-50%' },

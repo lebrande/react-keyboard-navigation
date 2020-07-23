@@ -26,7 +26,7 @@ const Slider: FC = () => {
               }}
               variants={sliderVariants}
               animate={variant}
-              initial={variant === 'prev' ? 'initialPrev' : 'initialNext'}
+              initial={variant === 'prev' ? 'initialPrev' : variant === 'next' ? 'initialNext' : 'initialActive'}
               exit={variant === 'prev' ? 'exitPrev' : 'exitNext'}
             >
               <p
