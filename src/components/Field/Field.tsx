@@ -1,5 +1,4 @@
-import * as React from 'react';
-import { useState, useRef, FC, ReactNode } from 'react';
+import React, { useState, useRef, FC, ReactNode } from 'react';
 import './Field.css';
 import { useFocusOutside } from '../../hooks/useFocusOutside';
 
@@ -12,7 +11,7 @@ const Field: FC<Props> = ({
   label,
   renderDropdown,
 }) => {
-  const controlRef = useRef(null);
+  const controlRef = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState(false);
   useFocusOutside(controlRef, () => {
     setIsOpen(false)

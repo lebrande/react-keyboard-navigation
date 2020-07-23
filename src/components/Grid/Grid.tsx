@@ -1,7 +1,7 @@
-import * as React from "react";
+import React, { FC } from "react";
 import { useSpatialNavigation } from "../../hooks/useSpatialNavigation";
 
-const Grid = () => {
+const Grid: FC = () => {
   useSpatialNavigation('#grid .tile.is-child');
 
   return (

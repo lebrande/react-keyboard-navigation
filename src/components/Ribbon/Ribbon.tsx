@@ -1,7 +1,7 @@
-import * as React from 'react';
+import React, { FC } from 'react';
 import './Ribbon.css';
 
-const Ribbon = () => {
+const Ribbon: FC = () => {
   return (
     <>
       <a

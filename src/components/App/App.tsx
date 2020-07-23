@@ -1,5 +1,4 @@
-import * as React from 'react';
-import { useState, useEffect, FC } from 'react';
+import React, { useState, useEffect, FC } from 'react';
 import SpatialNavigation from 'spatial-navigation-js';
 import Form from '../Form/Form';
 import Grid from '../Grid/Grid';
@@ -8,9 +7,7 @@ import Ribbon from '../Ribbon/Ribbon';
 import Slider from '../Slider/Slider';
 import { useSpatialNavigation } from '../../hooks/useSpatialNavigation';
 
-type Props = {};
-
-const App: FC<Props> = () => {
+const App: FC = () => {
   const [activeView, setActiveView] = useState<string>('form');
 
   useEffect(() => {

@@ -1,7 +1,12 @@
-import * as React from "react";
+import React, { FC } from 'react';
 import { useSpatialNavigation } from "../../hooks/useSpatialNavigation";
 
-const SidebarMenu = ({ activeView, setActiveView }) => {
+type Props = {
+  activeView: string;
+  setActiveView: (activeView: string) => void;
+};
+
+const SidebarMenu: FC<Props> = ({ activeView, setActiveView }) => {
   useSpatialNavigation("#menu a");
 
   return (

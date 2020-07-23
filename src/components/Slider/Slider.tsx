@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { FC } from "react";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useSpatialNavigation } from "../../hooks/useSpatialNavigation";
@@ -16,7 +16,7 @@ import pineapple from '../../img/pineapple.jpg';
 import strawberry from '../../img/strawberry.jpg';
 import tomato from '../../img/tomato.jpg';
 
-const images = [
+const images: string[] = [
   apple,
   blueberry,
   cherry,
@@ -40,7 +40,14 @@ const variants = {
   initialNext: { left: '90%', opacity: 0, scale: 0.5, x: '-50%', y: '-50%' },
 }
 
-const getVariant = (itemOrder, activeItemOrder) => {
+type Variant = keyof typeof variants | 'hidden';
+type Item = {
+  order: number;
+  image: string;
+  variant: Variant;
+};
+
+const getVariant = (itemOrder: number, activeItemOrder: number): Variant => {
   if (itemOrder - activeItemOrder + 1 === 0) {
     return 'prev';
   }
@@ -54,7 +61,7 @@ const getVariant = (itemOrder, activeItemOrder) => {
   return 'hidden';
 }
 
-const setVisibleItems = (activeItemOrder) => {
+const setVisibleItems = (activeItemOrder: number): Item[] => {
   return images
     .map((image, index) => ({
       order: index + 1,
@@ -69,7 +76,7 @@ const setVisibleItems = (activeItemOrder) => {
     );
 };
 
-const Slider = () => {
+const Slider: FC = () => {
   const [items, setItems] = useState(setVisibleItems(1));
 
   useSpatialNavigation("#slider .Slider__item", [items]);

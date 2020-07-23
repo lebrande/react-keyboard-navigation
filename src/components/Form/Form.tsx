@@ -1,9 +1,9 @@
-import * as React from 'react';
+import React, { FC } from 'react';
 import Field from '../Field/Field';
 import Submit from '../Submit/Submit';
 import { useSpatialNavigation } from '../../hooks/useSpatialNavigation';
 
-const Form = () => {
+const Form: FC = () => {
   useSpatialNavigation('#form input, #form button');
 
   return (
