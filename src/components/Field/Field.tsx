@@ -1,8 +1,14 @@
-import React, { useState, useRef } from 'react';
+import * as React from 'react';
+import { useState, useRef, FC, ReactNode } from 'react';
 import './Field.css';
 import { useFocusOutside } from '../../hooks/useFocusOutside';
 
-const Field = ({
+type Props = {
+  label: string;
+  renderDropdown?: () => ReactNode;
+}
+
+const Field: FC<Props> = ({
   label,
   renderDropdown,
 }) => {
