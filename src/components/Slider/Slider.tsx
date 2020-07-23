@@ -2,7 +2,9 @@ import React, { FC } from "react";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useSpatialNavigation } from "../../hooks/useSpatialNavigation";
-import { setItemsVariant, sliderVariants, filterVisibleItems } from './utils';
+import { filterVisibleItems } from './utils/filterVisibleItems';
+import { setItemsVariant  } from './utils/setItemsVariant';
+import { sliderVariants } from './utils/sliderVariants';
 import { sliderItemsMock } from './__mocks__/sliderItemsMock';
 import "./Slider.css";
 
