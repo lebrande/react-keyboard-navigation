@@ -2,43 +2,46 @@ import React from "react";
 import { useSpatialNavigation } from "../../hooks/useSpatialNavigation";
 
 const SidebarMenu = ({ activeView, setActiveView }) => {
-  useSpatialNavigation('#menu a');
+  useSpatialNavigation("#menu a");
 
   return (
     <aside id="menu" className="menu">
-      <p className="menu-label">Examples</p>
+      <p className="menu-label">Watch tv</p>
       <ul className="menu-list">
         <li>
           <a
             href="#"
             onClick={() => {
-              setActiveView('form');
+              setActiveView("grid");
             }}
-            className={activeView === 'form' ? 'is-active' : ''}
+            className={activeView === "grid" ? "is-active" : ""}
           >
-            Form
+            Channels
           </a>
         </li>
         <li>
           <a
             href="#"
             onClick={() => {
-              setActiveView('grid');
+              setActiveView("slider");
             }}
-            className={activeView === 'grid' ? 'is-active' : ''}
+            className={activeView === "slider" ? "is-active" : ""}
           >
-            Grid
+            Favorites
           </a>
         </li>
+      </ul>
+      <p className="menu-label">Get more</p>
+      <ul className="menu-list">
         <li>
           <a
             href="#"
             onClick={() => {
-              setActiveView('slider');
+              setActiveView("form");
             }}
-            className={activeView === 'slider' ? 'is-active' : ''}
+            className={activeView === "form" ? "is-active" : ""}
           >
-            Image Slider
+            Subscribe to my newsletter
           </a>
         </li>
       </ul>

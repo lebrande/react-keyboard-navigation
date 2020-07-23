@@ -11,17 +11,6 @@ const Form = () => {
     <form id="form">
       <Field label="Name" />
       <Field label="Email" />
-      <Field label="Phone number" />
-      <Field label="Delivery address" />
-      <Field
-        label="Delivery date"
-        renderDropdown={() => {
-          return (
-            <DatePicker />
-          );
-        }}
-      />
-      <Field label="Notes" />
       <Submit />
     </form>
   );
