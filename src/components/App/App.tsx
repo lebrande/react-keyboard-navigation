@@ -1,5 +1,11 @@
-import React, { useState, useEffect, FC } from 'react';
+import React, { useEffect, FC } from 'react';
 import SpatialNavigation from 'spatial-navigation-js';
+import {
+  BrowserRouter,
+  Switch,
+  Route,
+} from 'react-router-dom';
+
 import Form from '../Form/Form';
 import Grid from '../Grid/Grid';
 import SidebarMenu from '../SidebarMenu/SidebarMenu';
@@ -8,8 +14,6 @@ import Slider from '../Slider/Slider';
 import { useSpatialNavigation } from '../../hooks/useSpatialNavigation';
 
 const App: FC = () => {
-  const [activeView, setActiveView] = useState<string>('form');
-
   useEffect(() => {
     SpatialNavigation.init();
     SpatialNavigation.focus();
@@ -17,7 +21,7 @@ const App: FC = () => {
   useSpatialNavigation("#footer a");
 
   return (
-    <>
+    <BrowserRouter>
       <Ribbon />
 
       <section className="hero is-light">
@@ -33,26 +37,21 @@ const App: FC = () => {
         <div className="container">
           <div className="columns">
             <div className="column is-one-quarter">
-              <SidebarMenu
-                activeView={activeView}
-                setActiveView={setActiveView}
-              />
+              <SidebarMenu />
             </div>
-            {activeView === "form" && (
-              <div className="column">
+            <div className="column">
+            <Switch>
+              <Route path="/form">
                 <Form />
-              </div>
-            )}
-            {activeView === "grid" && (
-              <div className="column">
+              </Route>
+              <Route path="/grid">
                 <Grid />
-              </div>
-            )}
-            {activeView === "slider" && (
-              <div className="column">
+              </Route>
+              <Route path="/slider">
                 <Slider />
-              </div>
-            )}
+              </Route>
+            </Switch>
+            </div>
           </div>
         </div>
       </section>
@@ -76,7 +75,7 @@ const App: FC = () => {
           </div>
         </div>
       </footer>
-    </>
+    </BrowserRouter>
   );
 };
 

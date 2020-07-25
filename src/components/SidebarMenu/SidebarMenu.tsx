@@ -1,12 +1,8 @@
 import React, { FC } from 'react';
-import { useSpatialNavigation } from "../../hooks/useSpatialNavigation";
+import { useSpatialNavigation } from '../../hooks/useSpatialNavigation';
+import { NavLink } from 'react-router-dom';
 
-type Props = {
-  activeView: string;
-  setActiveView: (activeView: string) => void;
-};
-
-const SidebarMenu: FC<Props> = ({ activeView, setActiveView }) => {
+const SidebarMenu: FC = () => {
   useSpatialNavigation("#menu a");
 
   return (
@@ -14,40 +10,31 @@ const SidebarMenu: FC<Props> = ({ activeView, setActiveView }) => {
       <p className="menu-label">Watch tv</p>
       <ul className="menu-list">
         <li>
-          <a
-            href="#"
-            onClick={() => {
-              setActiveView("grid");
-            }}
-            className={activeView === "grid" ? "is-active" : ""}
+          <NavLink
+            to="grid"
+            activeClassName="is-active"
           >
             Channels
-          </a>
+          </NavLink>
         </li>
         <li>
-          <a
-            href="#"
-            onClick={() => {
-              setActiveView("slider");
-            }}
-            className={activeView === "slider" ? "is-active" : ""}
+          <NavLink
+            to="slider"
+            activeClassName="is-active"
           >
             Favorites
-          </a>
+          </NavLink>
         </li>
       </ul>
       <p className="menu-label">Get more</p>
       <ul className="menu-list">
         <li>
-          <a
-            href="#"
-            onClick={() => {
-              setActiveView("form");
-            }}
-            className={activeView === "form" ? "is-active" : ""}
+          <NavLink
+            to="form"
+            activeClassName="is-active"
           >
             Subscribe to my newsletter
-          </a>
+          </NavLink>
         </li>
       </ul>
     </aside>
