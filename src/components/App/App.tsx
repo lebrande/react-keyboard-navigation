@@ -1,10 +1,11 @@
 import React, { useEffect, FC } from 'react';
 import SpatialNavigation from 'spatial-navigation-js';
 import {
-  BrowserRouter,
   Switch,
   Route,
+  useLocation,
 } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
 
 import Form from '../Form/Form';
 import Grid from '../Grid/Grid';
@@ -12,6 +13,7 @@ import SidebarMenu from '../SidebarMenu/SidebarMenu';
 import Ribbon from '../Ribbon/Ribbon';
 import Slider from '../Slider/Slider';
 import { useSpatialNavigation } from '../../hooks/useSpatialNavigation';
+import Page from '../Page/Page';
 
 const App: FC = () => {
   useEffect(() => {
@@ -19,9 +21,10 @@ const App: FC = () => {
     SpatialNavigation.focus();
   }, []);
   useSpatialNavigation("#footer a");
+  const location = useLocation();
 
   return (
-    <BrowserRouter>
+    <>
       <Ribbon />
 
       <section className="hero is-light">
@@ -40,17 +43,25 @@ const App: FC = () => {
               <SidebarMenu />
             </div>
             <div className="column">
-            <Switch>
-              <Route path="/form">
-                <Form />
-              </Route>
-              <Route path="/grid">
-                <Grid />
-              </Route>
-              <Route path="/slider">
-                <Slider />
-              </Route>
-            </Switch>
+              <AnimatePresence exitBeforeEnter>
+                <Switch location={location} key={location.key}>
+                  <Route path="/form">
+                    <Page>
+                      <Form />
+                    </Page>
+                  </Route>
+                  <Route path="/grid">
+                    <Page>
+                      <Grid />
+                    </Page>
+                  </Route>
+                  <Route path="/slider">
+                    <Page>
+                      <Slider />
+                    </Page>
+                  </Route>
+                </Switch>
+              </AnimatePresence>
             </div>
           </div>
         </div>
@@ -75,7 +86,7 @@ const App: FC = () => {
           </div>
         </div>
       </footer>
-    </BrowserRouter>
+    </>
   );
 };
 
