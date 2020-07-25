@@ -1,20 +1,27 @@
-import React, { useState, useEffect, FC } from 'react';
+import React, { useEffect, FC } from 'react';
 import SpatialNavigation from 'spatial-navigation-js';
+import {
+  Switch,
+  Route,
+  useLocation,
+} from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
+
 import Form from '../Form/Form';
 import Grid from '../Grid/Grid';
 import SidebarMenu from '../SidebarMenu/SidebarMenu';
 import Ribbon from '../Ribbon/Ribbon';
 import Slider from '../Slider/Slider';
 import { useSpatialNavigation } from '../../hooks/useSpatialNavigation';
+import Page from '../Page/Page';
 
 const App: FC = () => {
-  const [activeView, setActiveView] = useState<string>('form');
-
   useEffect(() => {
     SpatialNavigation.init();
     SpatialNavigation.focus();
   }, []);
   useSpatialNavigation("#footer a");
+  const location = useLocation();
 
   return (
     <>
@@ -33,26 +40,29 @@ const App: FC = () => {
         <div className="container">
           <div className="columns">
             <div className="column is-one-quarter">
-              <SidebarMenu
-                activeView={activeView}
-                setActiveView={setActiveView}
-              />
+              <SidebarMenu />
             </div>
-            {activeView === "form" && (
-              <div className="column">
-                <Form />
-              </div>
-            )}
-            {activeView === "grid" && (
-              <div className="column">
-                <Grid />
-              </div>
-            )}
-            {activeView === "slider" && (
-              <div className="column">
-                <Slider />
-              </div>
-            )}
+            <div className="column">
+              <AnimatePresence exitBeforeEnter>
+                <Switch location={location} key={location.key}>
+                  <Route path="/form">
+                    <Page>
+                      <Form />
+                    </Page>
+                  </Route>
+                  <Route path="/grid">
+                    <Page>
+                      <Grid />
+                    </Page>
+                  </Route>
+                  <Route path="/slider">
+                    <Page>
+                      <Slider />
+                    </Page>
+                  </Route>
+                </Switch>
+              </AnimatePresence>
+            </div>
           </div>
         </div>
       </section>
