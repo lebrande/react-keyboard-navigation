@@ -1,0 +1,12 @@
+.Channels {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.Channels__link {
+  display: block;
+  width: 140px;
+  height: 140px;
+  background-size: cover;
+  background-repeat: no-repeat;
+}

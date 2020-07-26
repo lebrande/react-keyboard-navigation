@@ -11,7 +11,7 @@ const SidebarMenu: FC = () => {
       <ul className="menu-list">
         <li>
           <NavLink
-            to="grid"
+            to="/channels"
             activeClassName="is-active"
           >
             Channels
@@ -19,7 +19,7 @@ const SidebarMenu: FC = () => {
         </li>
         <li>
           <NavLink
-            to="slider"
+            to="/slider"
             activeClassName="is-active"
           >
             Favorites
@@ -30,7 +30,7 @@ const SidebarMenu: FC = () => {
       <ul className="menu-list">
         <li>
           <NavLink
-            to="form"
+            to="/form"
             activeClassName="is-active"
           >
             Subscribe to my newsletter

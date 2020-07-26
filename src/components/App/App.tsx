@@ -8,7 +8,8 @@ import {
 import { AnimatePresence } from 'framer-motion';
 
 import Form from '../Form/Form';
-import Grid from '../Grid/Grid';
+import Channels from '../Channels/Channels';
+import Channel from '../Channel/Channel';
 import SidebarMenu from '../SidebarMenu/SidebarMenu';
 import Ribbon from '../Ribbon/Ribbon';
 import Slider from '../Slider/Slider';
@@ -45,17 +46,22 @@ const App: FC = () => {
             <div className="column">
               <AnimatePresence exitBeforeEnter>
                 <Switch location={location} key={location.key}>
-                  <Route path="/form">
+                  <Route exact path="/form">
                     <Page>
                       <Form />
                     </Page>
                   </Route>
-                  <Route path="/grid">
+                  <Route exact path="/channels/:channelId">
                     <Page>
-                      <Grid />
+                      <Channel />
                     </Page>
                   </Route>
-                  <Route path="/slider">
+                  <Route exact path="/channels">
+                    <Page>
+                      <Channels />
+                    </Page>
+                  </Route>                  
+                  <Route exact path="/slider">
                     <Page>
                       <Slider />
                     </Page>
