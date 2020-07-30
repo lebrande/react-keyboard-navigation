@@ -1,10 +1,11 @@
 export type Channel = {
   name: string;
-  channelId: string;
+  id: string;
   image: string;
 };
 
 export type ChannelVideo = {
+  id: string;
   channelTitle: string;
   description: string;
   imageUrl: string;

@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
 import { motion } from 'framer-motion';
-import './Page.css';
 
 const pageVariants = {
   hidden: {

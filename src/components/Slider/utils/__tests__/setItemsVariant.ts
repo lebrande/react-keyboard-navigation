@@ -7,7 +7,7 @@ const setItemsVariantCases = [
   {
     input: {
       items: sliderItemsMock,
-      activeItemOrder: 1,
+      activeItemId: '0',
     },
     createExpected: () => {
       const sliderItemsMockClone = getItemsCopy();
@@ -19,7 +19,7 @@ const setItemsVariantCases = [
   {
     input: {
       items: sliderItemsMock,
-      activeItemOrder: 4,
+      activeItemId: '3',
     },
     createExpected: () => {
       const sliderItemsMockClone = getItemsCopy();
@@ -32,7 +32,7 @@ const setItemsVariantCases = [
   {
     input: {
       items: sliderItemsMock,
-      activeItemOrder: sliderItemsMock.length,
+      activeItemId: `${sliderItemsMock.length - 1}`,
     },
     createExpected: () => {
       const sliderItemsMockClone = getItemsCopy();
@@ -47,12 +47,12 @@ describe('setItemsVariant', () => {
   setItemsVariantCases.forEach(({
     input: {
       items,
-      activeItemOrder,
+      activeItemId,
     },
     createExpected,
   }) => {
-    it(`return active for activeItemOrder: ${activeItemOrder}`, () => {
-      expect(setItemsVariant(items, activeItemOrder)).toStrictEqual(createExpected());
+    it(`return active for activeItemId: ${activeItemId}`, () => {
+      expect(setItemsVariant(items, activeItemId)).toStrictEqual(createExpected());
     });
   });
 });

@@ -1,8 +1,9 @@
 import React, { FC, useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { useSpatialNavigation } from '../../hooks/useSpatialNavigation';
-import './Channels.css';
 import { Channel } from './types';
+import Slider from '../Slider/Slider';
+import ChannelSliderItem from '../ChannelSliderItem/ChannelSliderItem';
+import './Channels.css';
 
 const Channels: FC = () => {
   const [channelsList, setChannelsList] = useState<Channel[]>([]);
@@ -16,26 +17,21 @@ const Channels: FC = () => {
       });
   }, []);
 
+  const items = channelsList.map((item) => ({
+    ...item,
+    link: `/channels/${item.id}`,
+  }));
+
   return (
     <div id="channels" className="Channels">
-      {channelsList.map(({
-        channelId,
-        name,
-        image,
-      }) => {
-        return (
-          <Link
-            className="Channels__link"
-            key={channelId}
-            to={`/channels/${channelId}`}
-            style={{
-              backgroundImage: `url(${image})`,
-            }}
-          >
-            {name}
-          </Link>
-        );
-      })}
+      <Slider
+        items={items}
+        renderItem={({ image }) => {
+          return (
+            <ChannelSliderItem image={image} />
+          );
+        }}
+      />
     </div>
   );
 };

@@ -22,27 +22,31 @@ const fetchVideos = async ({
   cache.lastFetch = Date.now();
   cache.counter = 0;
 
-  cache.videosItems = results.data.items.map(({
-    snippet: {
-      title,
-      channelTitle,
-      description,
-      publishedAt,
-      thumbnails: {
-        default: {
-          url: imageUrl,
+  cache.videosItems = results.data.items
+    .map(({
+      id: {
+        videoId,
+      },
+      snippet: {
+        title,
+        channelTitle,
+        description,
+        publishedAt,
+        thumbnails: {
+          default: {
+            url: imageUrl,
+          },
         },
       },
-    },
-  }) => {
-    return ({
+    }) => ({
+      id: videoId,
       title,
       channelTitle,
       description,
       publishedAt,
       imageUrl,
-    });
-  });
+    }))
+    .filter(({ id }) => !!id);
 }
 
 exports.handler = async (event) => {

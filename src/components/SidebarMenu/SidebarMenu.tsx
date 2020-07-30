@@ -17,14 +17,6 @@ const SidebarMenu: FC = () => {
             Channels
           </NavLink>
         </li>
-        <li>
-          <NavLink
-            to="/slider"
-            activeClassName="is-active"
-          >
-            Favorites
-          </NavLink>
-        </li>
       </ul>
       <p className="menu-label">Get more</p>
       <ul className="menu-list">

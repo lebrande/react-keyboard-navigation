@@ -1,40 +1,68 @@
-import React, { FC } from "react";
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { useSpatialNavigation } from "../../hooks/useSpatialNavigation";
+import React, { FC, ReactNode } from 'react';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useSpatialNavigation } from '../../hooks/useSpatialNavigation';
 import { filterVisibleItems } from './utils/filterVisibleItems';
-import { setItemsVariant  } from './utils/setItemsVariant';
+import { setItemsVariant } from './utils/setItemsVariant';
 import { sliderVariants } from './utils/sliderVariants';
-import { sliderItemsMock } from './__mocks__/sliderItemsMock';
-import "./Slider.css";
+import { InputSliderItem, SliderItem } from './types';
+import { useHistory } from 'react-router-dom';
+import './Slider.css';
 
-const Slider: FC = () => {
-  const [items, setItems] = useState(setItemsVariant(sliderItemsMock, 1));
+type Props = {
+  items: InputSliderItem[];
+  renderItem: (item: {
+    image: string;
+    id: string;
+  }) => ReactNode;
+};
 
-  useSpatialNavigation("#slider .Slider__item", [items]);
+const Slider: FC<Props> = ({
+  items,
+  renderItem,
+}) => {
+  if (!items.length) {
+    return (
+      <p>No items</p>
+    );
+  }
+
+  const history = useHistory();
+  const inputItems: SliderItem[] = items.map((item) => ({
+      ...item,
+      variant: 'hidden',
+  }));
+  const [_items, setItems] = useState(setItemsVariant(inputItems, inputItems[0].id));
+  const visibleItems = filterVisibleItems(_items);
+
+  useSpatialNavigation('#slider .Slider__item', [_items]);
 
   return (
     <div id="slider" className="Slider">
       <AnimatePresence>
-        {filterVisibleItems(items).map(({ order, variant, image }) => {
+        {visibleItems.map(({ id, variant, image, link }) => {
+          console.log({ id })
           return (
             <motion.div
-              key={order}
+              key={id}
               className="Slider__item"
               onFocus={() => {
-                setItems(setItemsVariant(items, order));
+                setItems(setItemsVariant(_items, id));
+              }}
+              onClick={() => {
+                history.push(link);
+              }}
+              onKeyUp={({ key }) => {
+                if (['Enter', ' '].includes(key)) {
+                  history.push(link);
+                }
               }}
               variants={sliderVariants}
               animate={variant}
               initial={variant === 'prev' ? 'initialPrev' : variant === 'next' ? 'initialNext' : 'initialActive'}
               exit={variant === 'prev' ? 'exitPrev' : 'exitNext'}
             >
-              <p
-                className={`notification is-primary Slider__content`}
-                style={{
-                  backgroundImage: `url('${image}')`
-                }}
-              />
+              {renderItem({ image, id })}
             </motion.div>
           );
         })}

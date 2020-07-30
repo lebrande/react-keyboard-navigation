@@ -12,7 +12,6 @@ import Channels from '../Channels/Channels';
 import Channel from '../Channel/Channel';
 import SidebarMenu from '../SidebarMenu/SidebarMenu';
 import Ribbon from '../Ribbon/Ribbon';
-import Slider from '../Slider/Slider';
 import { useSpatialNavigation } from '../../hooks/useSpatialNavigation';
 import Page from '../Page/Page';
 
@@ -60,11 +59,6 @@ const App: FC = () => {
                     <Page>
                       <Channels />
                     </Page>
-                  </Route>                  
-                  <Route exact path="/slider">
-                    <Page>
-                      <Slider />
-                    </Page>
                   </Route>
                 </Switch>
               </AnimatePresence>
@@ -77,16 +71,14 @@ const App: FC = () => {
         <div className="container">
           <div className="content">
             <p>
+              JSJamTV JavaScript Network Television 2020 |{" "}
+              <a href="https://github.com/lebrande/react-keyboard-navigation">
+                Source code
+              </a> |{" "}
               <a href="https://twitter.com/le_brande">Twitter</a> |{" "}
               <a href="https://github.com/lebrande">Github</a> |{" "}
               <a href="https://www.youtube.com/channel/UCqawL4rsFulZi1zjpromBNQ">
                 youtube [PL]
-              </a>
-            </p>
-            <p>JSJamTV JavaScript Network Television 2020</p>
-            <p>
-              <a href="https://github.com/lebrande/react-keyboard-navigation">
-                Github repo
               </a>
             </p>
           </div>
