@@ -10,6 +10,7 @@ import { AnimatePresence } from 'framer-motion';
 import Form from '../Form/Form';
 import Channels from '../Channels/Channels';
 import Channel from '../Channel/Channel';
+import VideoPlayer from '../VideoPlayer/VideoPlayer';
 import SidebarMenu from '../SidebarMenu/SidebarMenu';
 import Ribbon from '../Ribbon/Ribbon';
 import { useSpatialNavigation } from '../../hooks/useSpatialNavigation';
@@ -45,9 +46,19 @@ const App: FC = () => {
             <div className="column">
               <AnimatePresence exitBeforeEnter>
                 <Switch location={location} key={location.key}>
+                  <Route exact path="/">
+                    <Page>
+                      <p>Welcome</p>
+                    </Page>
+                  </Route>
                   <Route exact path="/form">
                     <Page>
                       <Form />
+                    </Page>
+                  </Route>
+                  <Route exact path="/videos/:videoId">
+                    <Page>
+                      <VideoPlayer />
                     </Page>
                   </Route>
                   <Route exact path="/channels/:channelId">

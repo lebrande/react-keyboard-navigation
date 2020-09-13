@@ -30,7 +30,7 @@ const Channel: FC = () => {
   }) => ({
     id,
     image: imageUrl,
-    link: `/video/${id}`,
+    link: `/videos/${id}`,
   }))
 
   return (
