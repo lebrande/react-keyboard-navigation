@@ -41,7 +41,6 @@ const Slider: FC<Props> = ({
     <div id="slider" className="Slider">
       <AnimatePresence>
         {visibleItems.map(({ id, variant, image, link }) => {
-          console.log({ id })
           return (
             <motion.div
               key={id}

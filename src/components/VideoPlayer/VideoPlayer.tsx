@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { useParams } from 'react-router-dom';
+import ReactPlayer from 'react-player';
 
 type Params = {
   videoId: string;
@@ -8,12 +9,10 @@ type Params = {
 const VideoPlayer: FC = () => {
   const { videoId } = useParams<Params>();
 
-  console.log({ 
-    videoId,
-  })
-
   return (
-    <div>{videoId}</div>
+    <div>
+      <ReactPlayer url={`https://www.youtube.com/watch?v=${videoId}`} />
+    </div>
   );
 };
 
