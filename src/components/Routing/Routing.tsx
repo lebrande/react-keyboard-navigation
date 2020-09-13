@@ -51,6 +51,11 @@ const Routing: FC = () => {
                     <Channels />
                   </Page>
                 </Route>
+                <Route>
+                  <Page>
+                    <p>Not found 404</p>
+                  </Page>
+                </Route>
               </Switch>
             </AnimatePresence>
           </div>
