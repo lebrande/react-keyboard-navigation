@@ -2,12 +2,12 @@ import React from 'react';
 import { render } from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import 'bulma/css/bulma.css';
-import App from './components/App/App';
+import Root from './components/Root/Root';
 import './variables.css';
 
 render(
   <BrowserRouter>
-    <App />
+    <Root />
   </BrowserRouter>,
   document.getElementById('root'),
 );

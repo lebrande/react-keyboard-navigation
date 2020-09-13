@@ -1,5 +1,4 @@
-import React, { useEffect, FC } from 'react';
-import SpatialNavigation from 'spatial-navigation-js';
+import React, { FC } from 'react';
 import {
   Switch,
   Route,
@@ -7,86 +6,47 @@ import {
 } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 
-import Form from '../Form/Form';
-import Grid from '../Grid/Grid';
-import SidebarMenu from '../SidebarMenu/SidebarMenu';
-import Ribbon from '../Ribbon/Ribbon';
-import Slider from '../Slider/Slider';
-import { useSpatialNavigation } from '../../hooks/useSpatialNavigation';
+import Channels from '../Channels/Channels';
+import Channel from '../Channel/Channel';
+import VideoPlayer from '../VideoPlayer/VideoPlayer';
 import Page from '../Page/Page';
 
 const App: FC = () => {
-  useEffect(() => {
-    SpatialNavigation.init();
-    SpatialNavigation.focus();
-  }, []);
-  useSpatialNavigation("#footer a");
   const location = useLocation();
 
   return (
-    <>
-      <Ribbon />
-
-      <section className="hero is-light">
-        <div className="hero-body">
-          <div className="container">
-            <h1 className="title">JSJamTV</h1>
-            <h2 className="subtitle">JavaScript Network Television</h2>
+    <section className="section">
+      <div className="container">
+        <div className="columns">
+          <div className="column">
+            <AnimatePresence exitBeforeEnter>
+              <Switch location={location} key={location.key}>
+                <Route exact path="/videos/:videoId">
+                  <Page>
+                    <VideoPlayer />
+                  </Page>
+                </Route>
+                <Route exact path="/channels/:channelId">
+                  <Page>
+                    <Channel />
+                  </Page>
+                </Route>
+                <Route exact path="/">
+                  <Page>
+                    <Channels />
+                  </Page>
+                </Route>
+                <Route>
+                  <Page>
+                    <p>Not found 404</p>
+                  </Page>
+                </Route>
+              </Switch>
+            </AnimatePresence>
           </div>
         </div>
-      </section>
-
-      <section className="section">
-        <div className="container">
-          <div className="columns">
-            <div className="column is-one-quarter">
-              <SidebarMenu />
-            </div>
-            <div className="column">
-              <AnimatePresence exitBeforeEnter>
-                <Switch location={location} key={location.key}>
-                  <Route path="/form">
-                    <Page>
-                      <Form />
-                    </Page>
-                  </Route>
-                  <Route path="/grid">
-                    <Page>
-                      <Grid />
-                    </Page>
-                  </Route>
-                  <Route path="/slider">
-                    <Page>
-                      <Slider />
-                    </Page>
-                  </Route>
-                </Switch>
-              </AnimatePresence>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <footer id="footer" className="footer">
-        <div className="container">
-          <div className="content">
-            <p>
-              <a href="https://twitter.com/le_brande">Twitter</a> |{" "}
-              <a href="https://github.com/lebrande">Github</a> |{" "}
-              <a href="https://www.youtube.com/channel/UCqawL4rsFulZi1zjpromBNQ">
-                youtube [PL]
-              </a>
-            </p>
-            <p>JSJamTV JavaScript Network Television 2020</p>
-            <p>
-              <a href="https://github.com/lebrande/react-keyboard-navigation">
-                Github repo
-              </a>
-            </p>
-          </div>
-        </div>
-      </footer>
-    </>
+      </div>
+    </section>
   );
 };
 

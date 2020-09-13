@@ -3,11 +3,16 @@ import { getVariant } from './getVariant';
 
 export const setItemsVariant = (
   items: SliderItem[],
-  activeItemOrder: number,
+  activeItemId: string,
 ): SliderItem[] => {
+  const activeItemIndex = items.findIndex(({ id }) => id === activeItemId);
+  if (activeItemIndex === -1) {
+    return items;
+  }
+  
   return items
-    .map((item) => ({
+    .map((item, index) => ({
       ...item,
-      variant: getVariant(item.order, activeItemOrder),
+      variant: getVariant(index, activeItemIndex),
     }));
 };
